@@ -1,0 +1,61 @@
+name: Feature request
+description: Suggest a new capability or an improvement to an existing one.
+title: '[Feature]: '
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement.
+
+        Describe the problem before the solution — knowing what you are trying to achieve often
+        surfaces a simpler answer than the one that first comes to mind. If you are unsure whether
+        an idea fits the project, open a Discussion first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem this would solve
+      description: What are you trying to do today, and where does the widget get in the way?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What should the widget do instead? Describe the behavior, not the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered
+      description: Workarounds you tried, and why they were not enough.
+    validations:
+      required: false
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platforms this affects
+      description: Select every platform where you would use this.
+      multiple: true
+      options:
+        - Windows
+        - Linux
+        - macOS
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups, links, or entity types this would apply to.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the existing issues and this is not a duplicate.
+          required: true

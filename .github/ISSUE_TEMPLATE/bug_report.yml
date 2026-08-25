@@ -1,0 +1,90 @@
+name: Bug report
+description: Something in HA Desktop Widget behaves incorrectly or stops working.
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report.
+
+        **This tracker is public and issues cannot be un-published.** HA Desktop Widget signs its
+        Home Assistant requests with a long-lived access token sent as an `Authorization: Bearer`
+        header, and Profile Sync can be protected by a passphrase.
+        Redact every token, `Bearer` header, and passphrase from anything you paste below.
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Settings → General → Application Updates shows this next to "Current Version".
+      placeholder: '3.9.1'
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      description: The platform you reproduced this on. CI builds and packages all three.
+      options:
+        - Windows
+        - Linux
+        - macOS
+    validations:
+      required: true
+  - type: input
+    id: platform-details
+    attributes:
+      label: OS version and desktop environment
+      description: On Linux, name the desktop and session type — behavior differs between them.
+      placeholder: 'Windows 11 23H2 / Fedora 40 GNOME Wayland / macOS 14.5'
+    validations:
+      required: false
+  - type: input
+    id: ha-version
+    attributes:
+      label: Home Assistant version
+      description: The version of the Home Assistant instance the widget connects to.
+      placeholder: '2026.8.0'
+    validations:
+      required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you observed, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps that reliably produce the behavior, starting from a fresh launch.
+      placeholder: |
+        1. Open Settings → ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: |
+        Settings → Advanced → View Logs opens the log file location.
+
+        Redact your Home Assistant token, `Bearer` header, and sync passphrase before pasting.
+        A leaked long-lived token grants live control of your Home Assistant to anyone reading
+        this page, and rotating it in Home Assistant is the only way to revoke it.
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the existing issues and this is not a duplicate.
+          required: true
+        - label: I removed every token, `Bearer` header, and passphrase from the text above.
+          required: true
