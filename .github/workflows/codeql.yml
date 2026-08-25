@@ -1,0 +1,64 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Re-analyse once a week so newly published CodeQL queries reach code that
+  # has not changed since the pull request that last analysed it.
+  schedule:
+    - cron: '17 4 * * 1'
+
+# Declared once, at workflow level, and deliberately not repeated on the job:
+# a job-level block replaces this one rather than merging with it, so keeping
+# the declaration here makes it the whole token every step below receives.
+#
+#   security-events: write  uploads the analysis results to code scanning.
+#     No other workflow in this repository requests this scope.
+#   contents: read          checks out the source, which is all this analysis
+#     reads.
+#
+# A pull request opened from a fork runs with a read-only token and no access
+# to repository secrets no matter what this block asks for, and code scanning's
+# results upload is permitted under that cap. Keeping the trigger above on
+# pull_request preserves that; the fork-privileged trigger variant would hand
+# the full block and real secrets to code no maintainer has reviewed yet.
+permissions:
+  security-events: write
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    # Analysis of this codebase finishes in minutes; the cap only stops a
+    # wedged run from holding a runner for the six-hour default.
+    timeout-minutes: 30
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # javascript-typescript is CodeQL's single identifier covering both
+          # languages. This repository tracks JavaScript sources only; the
+          # same identifier keeps working unchanged if TypeScript is added.
+          # build-mode: none is the documented mode for interpreted
+          # languages, which need no compilation before analysis.
+          - language: javascript-typescript
+            build-mode: none
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: '/language:${{ matrix.language }}'
