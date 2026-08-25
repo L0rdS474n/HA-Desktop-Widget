@@ -105,35 +105,13 @@ Thank you for your interest in contributing to HA Desktop Widget! This document 
 - [ ] No console errors or warnings
 - [ ] Performance impact is considered
 
-### PR Description Template
+### Writing the PR Description
 
-```markdown
-## Description
-
-Brief description of changes
-
-## Type of Change
-
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## Testing
-
-- [ ] Tested on every platform affected by the change
-- [ ] Platform-specific limitations or untested environments are documented
-- [ ] All existing functionality works
-- [ ] New features tested thoroughly
-
-## Screenshots (if applicable)
-
-Add screenshots to help explain your changes
-
-## Additional Notes
-
-Any additional information about the changes
-```
+Opening a pull request loads
+[`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md) automatically. That file is
+the single source of truth for what a description must cover: a summary, the kind of change, how it
+was tested, any platform-specific limitations or untested environments, and the issue it closes.
+Fill in every section it prompts for and delete the ones that do not apply.
 
 ## 🏗️ Project Structure
 

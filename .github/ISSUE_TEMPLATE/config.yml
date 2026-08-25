@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a suspected security flaw privately
+    url: https://github.com/Robertg761/HA-Desktop-Widget/blob/main/SECURITY.md
+    about: Do not open a public issue for this. SECURITY.md explains how to reach the maintainer privately.
+  - name: Questions, setup help, and general discussion
+    url: https://github.com/Robertg761/HA-Desktop-Widget/discussions
+    about: Ask before filing — a question is usually answered faster in Discussions than in an issue.
