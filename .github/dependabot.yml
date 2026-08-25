@@ -1,0 +1,33 @@
+# Dependabot version updates for HA Desktop Widget.
+#
+# Two entries, both rooted at "/".
+#
+# npm: the root package.json declares "packages/*" as npm workspaces, and the
+# repository contains exactly one lockfile, the root package-lock.json, which
+# every workspace resolves into. packages/widget-renderer declares no
+# dependencies and no devDependencies of its own today, so a second entry
+# aimed at that workspace directory would have no manifest content to update.
+# Add a per-workspace entry as soon as a workspace package gains its own
+# dependencies or devDependencies. This choice rests on those two measured
+# facts and not on documented behaviour: GitHub's Dependabot options reference
+# describes no workspace resolution rules at all, so re-examine the layout
+# whenever either fact stops holding.
+#
+# github-actions: this ecosystem updates the "uses:" pins in
+# .github/workflows, which sits at the repository root, so "/" is the only
+# directory it can take here.
+
+version: 2
+
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'

@@ -1,0 +1,16 @@
+# Review ownership for HA Desktop Widget.
+#
+# GitHub requests a review from the owners listed here whenever a pull request
+# touches a matching path. Ownership only takes effect for accounts that hold
+# write access on the repository hosting this file, so a fork of this
+# repository will not act on these rules.
+#
+# One catch-all rule rather than per-directory rows: this file names a single
+# owner, so path-specific rows would repeat that same handle on every path and
+# add maintenance cost without changing who gets asked. Split this into
+# path-specific rows once a second account owns part of the tree.
+#
+# The handle below is the same one SECURITY.md names under "Contact
+# Information"; keep the two in step.
+
+* @Robertg761
